@@ -1,7 +1,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@color/color_log_in"
+    android:background="@color/color_log_in"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -15,7 +14,7 @@
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textColor="#fafafa"
-        tools:text="Sign up"
+        android:text="@string/log_in_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +23,7 @@
 
     <TextView
         android:background="@drawable/rounded_left"
-        tools:text="Log In"
+        android:text="@string/sign_up_label"
         android:padding="16dp"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -35,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/textView"
+        android:id="@+id/controller"
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
@@ -75,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintRight_toLeftOf="@+id/textView"
+        app:layout_constraintRight_toLeftOf="@+id/controller"
         android:layout_marginRight="8dp" />
 
     <android.support.constraint.Guideline

@@ -2,7 +2,7 @@ package com.vpaliy.flip_concept;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.transition.Transition;
+import butterknife.OnClick;
 
 public abstract class AuthFragment extends Fragment {
 
@@ -12,10 +12,17 @@ public abstract class AuthFragment extends Fragment {
         this.callback = callback;
     }
 
-    //public abstract void fold();
+    public abstract void fireAnimation();
 
     interface Callback {
-        void show(AuthFragment fragment);
+        void remove(AuthFragment fragment);
     }
 
+
+    @OnClick(R.id.controller)
+    public void makeTransition(){
+        if(callback!=null){
+            callback.remove(this);
+        }
+    }
 }

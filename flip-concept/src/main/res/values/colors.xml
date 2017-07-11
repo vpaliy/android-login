@@ -3,8 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    
-    <color name="color_sign_up">#A0009688</color>
-    <color name="color_log_in">#A0673AB7</color>
+
+    <color name="color_sign_up">#7e019c8f</color>
+    <color name="color_log_in">#886e1ca3</color>
+
 
 </resources>
