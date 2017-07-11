@@ -19,9 +19,14 @@ public abstract class AuthFragment extends Fragment {
     @BindView(R.id.parent)
     protected ViewGroup parent;
 
-
     @BindView(R.id.first)
     protected View first;
+
+    @BindView(R.id.second)
+    protected View second;
+
+    @BindView(R.id.last)
+    protected View last;
 
 
     public void setCallback(@NonNull Callback callback) {

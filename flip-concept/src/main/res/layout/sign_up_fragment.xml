@@ -52,9 +52,7 @@
         app:layout_constraintVertical_bias="0.95"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@+id/controller"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintLeft_toRightOf="@+id/controller" />
 
     <ImageView
         android:src="@drawable/linkedin"

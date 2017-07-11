@@ -1,9 +1,7 @@
 package com.vpaliy.flip_concept;
 
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         AnimatedViewPager pager= ButterKnife.findById(this,R.id.pager);
         pager.setAdapter(new AuthAdapter(getSupportFragmentManager(),pager));
     }
