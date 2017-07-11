@@ -39,8 +39,8 @@ public class VerticalTextView extends AppCompatTextView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         // vise versa
         if(isVerticalText) {
-            height = getMeasuredWidth()+10;
-            width = getMeasuredHeight()+10;
+            height = getMeasuredWidth();
+            width = getMeasuredHeight();
             setMeasuredDimension(width, height);
         }
     }

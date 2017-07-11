@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.transition.TransitionManager;
 import android.view.View;
-import butterknife.OnClick;
 import android.support.annotation.Nullable;
 import android.annotation.TargetApi;
 

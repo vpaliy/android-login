@@ -15,7 +15,6 @@
         android:textSize="40sp"
         android:textAllCaps="true"
         android:textStyle="bold"
-        android:gravity="center"
         android:textColor="#fafafa"
         android:text="Log In"
         app:layout_constraintLeft_toLeftOf="parent"

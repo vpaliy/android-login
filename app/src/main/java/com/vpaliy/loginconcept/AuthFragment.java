@@ -53,10 +53,10 @@ public abstract class AuthFragment extends Fragment {
         ConstraintLayout.LayoutParams params=getParams();
         params.rightToRight=ConstraintLayout.LayoutParams.PARENT_ID;
         params.leftToLeft=ConstraintLayout.LayoutParams.PARENT_ID;
-        params.verticalBias=0.7f;
-        caption.setScaleY(1.f);
-        caption.setScaleX(1.f);
-        caption.setVerticalText(false);
+        params.verticalBias=0.8f;
+        caption.setScaleY(1f);
+        caption.setScaleX(1f);
+        caption.setRotation(-90);
         caption.setLayoutParams(params);
         callback.show(this);
     }

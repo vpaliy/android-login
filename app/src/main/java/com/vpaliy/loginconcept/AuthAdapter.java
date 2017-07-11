@@ -42,7 +42,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     @Override
     public float getPageWidth(int position) {
-        return 0.9f;
+        return 0.89f;
     }
 
     @Override

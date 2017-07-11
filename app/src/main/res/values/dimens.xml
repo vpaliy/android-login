@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="auth_page_margin">24dp</dimen>
+
+    <dimen name="folded_size">17sp</dimen>
+    <dimen name="unfolded_size">26sp</dimen>
 </resources>
