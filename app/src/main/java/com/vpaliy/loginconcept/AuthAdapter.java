@@ -21,7 +21,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     public AuthFragment getItem(int position) {
         AuthFragment fragment=authArray.get(position);
         if(fragment==null){
-            fragment=position!=1?new LogInFragment() :new SignUpFragment();
+            fragment=position!=1?new LogInFragment():new SignUpFragment();
             authArray.put(position,fragment);
             fragment.setCallback(this);
         }
