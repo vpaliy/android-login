@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:background="@drawable/rounded_left"
+        android:background="@drawable/rounded_right"
         tools:text="Log In"
         android:padding="16dp"
         android:textAllCaps="true"
@@ -32,11 +32,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/textView"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:id="@+id/textView" />
 
     <ImageView
         android:src="@drawable/facebook"
@@ -49,9 +49,11 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toRightOf="@+id/textView"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
 
     <ImageView
         android:src="@drawable/linkedin"
@@ -71,12 +73,11 @@
         android:id="@+id/last"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/second"
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintRight_toLeftOf="@+id/textView"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
