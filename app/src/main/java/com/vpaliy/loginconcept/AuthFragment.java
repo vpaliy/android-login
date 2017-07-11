@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,12 +45,22 @@ public abstract class AuthFragment extends Fragment {
     }
 
     public abstract void fold();
-
+    public abstract Transition unfoldTransition();
 
     @OnClick(R.id.caption)
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void unfold(){
-        TransitionManager.beginDelayedTransition(parent);
+        Transition transition= unfoldTransition();
+        transition.addListener(new TransitionAdapterListener(){
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                super.onTransitionEnd(transition);
+                caption.setVerticalText(false);
+                caption.setRotation(0);
+                caption.requestLayout();
+            }
+        });
+        TransitionManager.beginDelayedTransition(parent, transition);
         ConstraintLayout.LayoutParams params=getParams();
         params.rightToRight=ConstraintLayout.LayoutParams.PARENT_ID;
         params.leftToLeft=ConstraintLayout.LayoutParams.PARENT_ID;

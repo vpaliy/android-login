@@ -2,19 +2,19 @@ package com.vpaliy.loginconcept;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.SparseArray;
 
 public class AuthAdapter extends FragmentStatePagerAdapter
         implements AuthFragment.Callback{
 
-    private ViewPager pager;
+    private AnimatedViewPager pager;
     private SparseArray<AuthFragment> authArray;
 
-    public AuthAdapter(FragmentManager manager, ViewPager pager){
+    public AuthAdapter(FragmentManager manager, AnimatedViewPager pager){
         super(manager);
         this.pager=pager;
         this.authArray=new SparseArray<>(getCount());
+        pager.setDuration(pager.getResources().getInteger(R.integer.duration));
     }
 
     @Override
@@ -30,8 +30,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     @Override
     public void show(AuthFragment fragment) {
-        pager.setCurrentItem(authArray.keyAt(authArray.indexOfValue(fragment)));
-        int index=authArray.keyAt(authArray.indexOfValue(fragment));
+        final int index=authArray.keyAt(authArray.indexOfValue(fragment));
         pager.setCurrentItem(index,true);
         for(int jIndex=0;jIndex<authArray.size();jIndex++){
             if(jIndex!=index){

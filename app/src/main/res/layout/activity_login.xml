@@ -2,18 +2,69 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vpaliy.loginconcept.LoginActivity">
 
-    <android.support.v4.view.ViewPager
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/pager"
+
+    <com.q42.android.scrollingimageview.ScrollingImageView
+        android:id="@+id/scrolling_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        scrolling_image_view:speed="1dp"
+        scrolling_image_view:src="@drawable/people"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.vpaliy.loginconcept.AnimatedViewPager
+        android:id="@+id/pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/purple_300"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageView
+        android:src="@drawable/facebook"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:id="@+id/first"
+        app:layout_constraintRight_toLeftOf="@+id/second"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <ImageView
+        android:src="@drawable/linkedin"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:id="@+id/second"
+        app:layout_constraintLeft_toRightOf="@+id/first"
+        app:layout_constraintRight_toLeftOf="@+id/last"
+        app:layout_constraintTop_toTopOf="@+id/first"
+        app:layout_constraintBottom_toBottomOf="@+id/first"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:src="@drawable/twitter"
+        android:id="@+id/last"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/second"
+        app:layout_constraintBottom_toBottomOf="@+id/second"
+        app:layout_constraintTop_toTopOf="@+id/second"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

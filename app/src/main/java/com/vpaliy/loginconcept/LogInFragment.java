@@ -4,6 +4,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.annotation.TargetApi;
@@ -16,7 +18,6 @@ public class LogInFragment extends AuthFragment{
         super.onViewCreated(view, savedInstanceState);
         if(view!=null){
             caption.setText(getString(R.string.log_in_label));
-            caption.setTopDown(true);
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.purple_300));
         }
     }
@@ -33,5 +34,12 @@ public class LogInFragment extends AuthFragment{
         params.verticalBias=0.5f;
         caption.setLayoutParams(params);
 
+    }
+
+    @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public Transition unfoldTransition() {
+        return TransitionInflater.from(getContext())
+                .inflateTransition(R.transition.left_to_right);
     }
 }

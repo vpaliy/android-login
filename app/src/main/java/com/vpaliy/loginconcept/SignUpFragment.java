@@ -4,6 +4,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.support.annotation.Nullable;
@@ -27,6 +29,13 @@ public class SignUpFragment extends AuthFragment{
     public void fold() {
         TransitionManager.beginDelayedTransition(parent);
         foldStuff();
+    }
+
+    @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public Transition unfoldTransition() {
+        return TransitionInflater.from(getContext())
+                .inflateTransition(R.transition.right_to_left);
     }
 
     private void foldStuff(){
