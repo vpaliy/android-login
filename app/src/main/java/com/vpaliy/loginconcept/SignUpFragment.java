@@ -18,7 +18,7 @@ public class SignUpFragment extends AuthFragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(view!=null){
-            view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.blue_300));
+            view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_sign_up));
             caption.setText(getString(R.string.sign_up_label));
             foldStuff();
         }

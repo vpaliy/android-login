@@ -18,7 +18,7 @@ public class LogInFragment extends AuthFragment{
         super.onViewCreated(view, savedInstanceState);
         if(view!=null){
             caption.setText(getString(R.string.log_in_label));
-            view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.purple_300));
+            view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_log_in));
         }
     }
 

@@ -1,20 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vpaliy.loginconcept.LoginActivity">
 
 
-    <com.q42.android.scrollingimageview.ScrollingImageView
+    <ImageView
         android:id="@+id/scrolling_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        scrolling_image_view:speed="1dp"
-        scrolling_image_view:src="@drawable/people"
+        android:scaleType="centerCrop"
+        android:src="@drawable/people"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -25,7 +23,7 @@
         android:id="@+id/pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/purple_300"
+        android:background="@color/color_log_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
