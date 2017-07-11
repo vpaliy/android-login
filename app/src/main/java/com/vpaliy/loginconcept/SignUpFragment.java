@@ -25,6 +25,11 @@ public class SignUpFragment extends AuthFragment{
     }
 
     @Override
+    public int authLayout() {
+        return R.layout.sign_up_fragment;
+    }
+
+    @Override
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
         TransitionManager.beginDelayedTransition(parent);

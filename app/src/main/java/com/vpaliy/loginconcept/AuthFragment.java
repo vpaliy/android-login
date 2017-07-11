@@ -3,6 +3,7 @@ package com.vpaliy.loginconcept;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -35,7 +36,7 @@ public abstract class AuthFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.login_fragment,container,false);
+        View root=inflater.inflate(authLayout(),container,false);
         ButterKnife.bind(this,root);
         return root;
     }
@@ -44,6 +45,8 @@ public abstract class AuthFragment extends Fragment {
         this.callback = callback;
     }
 
+    @LayoutRes
+    public abstract int authLayout();
     public abstract void fold();
     public abstract Transition unfoldTransition();
 
