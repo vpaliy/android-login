@@ -2,11 +2,27 @@ package com.vpaliy.flip_concept;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public abstract class AuthFragment extends Fragment {
 
     protected Callback callback;
+
+    @BindView(R.id.controller)
+    protected TextView controller;
+
+    @BindView(R.id.parent)
+    protected ViewGroup parent;
+
+
+    @BindView(R.id.first)
+    protected View first;
+
 
     public void setCallback(@NonNull Callback callback) {
         this.callback = callback;

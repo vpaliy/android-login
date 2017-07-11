@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ViewPager pager= ButterKnife.findById(this,R.id.pager);
+        AnimatedViewPager pager= ButterKnife.findById(this,R.id.pager);
         pager.setAdapter(new AuthAdapter(getSupportFragmentManager(),pager));
     }
 }
