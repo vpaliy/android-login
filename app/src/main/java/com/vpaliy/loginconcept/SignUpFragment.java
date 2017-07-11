@@ -1,9 +1,12 @@
 package com.vpaliy.loginconcept;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +14,15 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SignUpFragment extends AuthFragment{
 
     @BindView(R.id.caption)
     protected TextView caption;
+
+    @BindView(R.id.root)
+    protected ViewGroup parent;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +47,28 @@ public class SignUpFragment extends AuthFragment{
         }
     }
 
+    @OnClick(R.id.caption)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void unfold(){
+        TransitionManager.beginDelayedTransition(parent);
+        caption.setRotation(0f);
+        ConstraintLayout.LayoutParams params=getParams();
+        params.leftToLeft=ConstraintLayout.LayoutParams.PARENT_ID;
+        params.verticalBias=0.7f;
+    }
+
+    private ConstraintLayout.LayoutParams getParams(){
+        return ConstraintLayout.LayoutParams.class.cast(caption.getLayoutParams());
+    }
+
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
+        TransitionManager.beginDelayedTransition(parent);
+        caption.setRotation(-90f);
+        ConstraintLayout.LayoutParams params=getParams();
+        params.leftToLeft=ConstraintLayout.LayoutParams.UNSET;
+        params.verticalBias=0.5f;
 
     }
 }
