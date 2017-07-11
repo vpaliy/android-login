@@ -8,13 +8,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.vpaliy.loginconcept.VerticalTextView
         android:id="@+id/caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="40sp"
         android:textAllCaps="true"
         android:textStyle="bold"
+        android:gravity="center"
         android:textColor="#fafafa"
         android:text="Log In"
         app:layout_constraintLeft_toLeftOf="parent"

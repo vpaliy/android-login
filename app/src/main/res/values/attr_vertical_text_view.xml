@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="VerticalTextView">
         <attr name="is_vertical_text" format="boolean"/>
+        <attr name="top_down" format="boolean"/>
     </declare-styleable>
 </resources>
