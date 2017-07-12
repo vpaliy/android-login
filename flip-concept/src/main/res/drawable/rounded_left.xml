@@ -3,6 +3,6 @@
     <corners
             android:bottomLeftRadius="100dp"
             android:topLeftRadius="100dp"/>
-    <stroke android:color="#87eeeeee"/>
-    <solid android:color="#87eeeeee"/>
+    <stroke android:color="@color/color_sign_up"/>
+    <solid android:color="@color/color_sign_up"/>
 </shape>

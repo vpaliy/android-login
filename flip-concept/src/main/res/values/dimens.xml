@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="option_size">32dp</dimen>
+    <dimen name="option_size">48dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_big">32dp</dimen>
+    <dimen name="switcher_padding">28dp</dimen>
+
+    <dimen name="option_margin">24dp</dimen>
+
 </resources>

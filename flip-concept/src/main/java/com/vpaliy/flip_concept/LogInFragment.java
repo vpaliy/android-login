@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
+
 import butterknife.ButterKnife;
 
 public class LogInFragment extends AuthFragment {
@@ -33,7 +35,8 @@ public class LogInFragment extends AuthFragment {
         ObjectAnimator buttonAnimator=ObjectAnimator.ofFloat(controller,View.TRANSLATION_X,0);
 
         AnimatorSet animatorSet=new AnimatorSet();
-        animatorSet.setStartDelay(250);
+        animatorSet.setStartDelay(500);
+        animatorSet.setInterpolator(new BounceInterpolator());
         animatorSet.playTogether(firstAnimator,secondAnimator,lastAnimator,buttonAnimator);
         animatorSet.start();
     }
