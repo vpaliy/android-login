@@ -17,7 +17,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     public AuthAdapter(FragmentManager manager, AnimatedViewPager pager){
         super(manager);
         this.pager=pager;
-        transformer=new FlipTransformer(90);
+        transformer=new FlipTransformer(160);
         this.pager.setPageTransformer(true,transformer);
     }
 
