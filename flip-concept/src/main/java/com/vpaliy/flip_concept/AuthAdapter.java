@@ -17,54 +17,6 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     public AuthAdapter(FragmentManager manager, AnimatedViewPager pager){
         super(manager);
         this.pager=pager;
-        this.pager.setDuration(10000);
-        this.pager.setPageTransformer(true, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(View page, float position) {
-                onPreTransform(page,position);
-                if(position<=0){
-                    page.setTranslationX(page.getWidth());
-                    page.setAlpha(1+position);
-                }else {
-                    final float width = page.getWidth();
-                    final float height = page.getHeight();
-                    final float rotation = -35f * position * -1.25f;
-
-                    page.setPivotX(width * 0.5f);
-                    page.setPivotY(height);
-                    page.setRotation(rotation);
-                }
-            }
-
-            private  void onPreTransform(View view, float position) {
-                view.setRotationX(0);
-                view.setRotationY(0);
-                view.setRotation(0);
-                view.setScaleX(1);
-                view.setScaleY(1);
-                view.setPivotX(0);
-                view.setPivotY(0);
-                view.setTranslationY(0);
-                view.setTranslationX(0f);
-                view.setAlpha(1);
-            }
-        });
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                transformer.setMovingForward(position==0);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         transformer=new FlipTransformer(90);
         this.pager.setPageTransformer(true,transformer);
     }
