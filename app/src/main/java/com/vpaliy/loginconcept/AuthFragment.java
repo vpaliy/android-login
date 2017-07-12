@@ -7,13 +7,24 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -38,6 +49,15 @@ public abstract class AuthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(authLayout(),container,false);
         ButterKnife.bind(this,root);
+        KeyboardVisibilityEvent.setEventListener(getActivity(), new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                callback.scale(isOpen);
+                if(!isOpen){
+                   clearFocus();
+                }
+            }
+        });
         return root;
     }
 
@@ -48,6 +68,7 @@ public abstract class AuthFragment extends Fragment {
     @LayoutRes
     public abstract int authLayout();
     public abstract void fold();
+    public abstract void clearFocus();
     public abstract Transition unfoldTransition();
 
     @OnClick(R.id.caption)
@@ -81,6 +102,7 @@ public abstract class AuthFragment extends Fragment {
 
     interface Callback {
         void show(AuthFragment fragment);
+        void scale(boolean hasFocus);
     }
 
 }

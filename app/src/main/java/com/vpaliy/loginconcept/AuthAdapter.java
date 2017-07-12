@@ -62,7 +62,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     }
 
     private void shiftSharedElements(float pageOffsetX, boolean forward){
-        //shift shared elements on the screen
+        //since we're clipping the page, we have to adjust the shared elements
         AnimatorSet shiftAnimator=new AnimatorSet();
         for(View view:sharedElements){
             float translationX=forward?pageOffsetX:-pageOffsetX;
@@ -71,13 +71,23 @@ public class AuthAdapter extends FragmentStatePagerAdapter
             ObjectAnimator shift=ObjectAnimator.ofFloat(view,View.TRANSLATION_X,0,translationX);
             shiftAnimator.playTogether(shift);
         }
-        //shift the background
+        //scroll the background by x
         int offset=authBackground.getWidth()/2;
         ObjectAnimator scrollAnimator=ObjectAnimator.ofInt(authBackground,"scrollX",forward?offset:-offset);
         shiftAnimator.playTogether(scrollAnimator);
         shiftAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         shiftAnimator.setDuration(pager.getResources().getInteger(R.integer.duration)/2);
         shiftAnimator.start();
+    }
+
+    @Override
+    public void scale(boolean hasFocus) {
+        float scale=hasFocus?1:1.4f;
+        authBackground.animate()
+                .scaleX(scale)
+                .scaleY(scale)
+                .setDuration(200)
+                .start();
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.vpaliy.loginconcept;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
@@ -11,8 +12,17 @@ import android.view.View;
 import android.support.annotation.Nullable;
 import android.annotation.TargetApi;
 
+import java.util.List;
+
+import butterknife.BindViews;
+
 
 public class SignUpFragment extends AuthFragment{
+
+    @BindViews(value = {R.id.email_input_edit,
+            R.id.password_input_edit,
+            R.id.confirm_password_edit})
+    protected List<View> views;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -27,6 +37,13 @@ public class SignUpFragment extends AuthFragment{
     @Override
     public int authLayout() {
         return R.layout.sign_up_fragment;
+    }
+
+    @Override
+    public void clearFocus() {
+        for(View view:views){
+            view.clearFocus();
+        }
     }
 
     @Override
