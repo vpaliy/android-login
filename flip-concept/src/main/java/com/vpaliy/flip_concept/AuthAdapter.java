@@ -12,21 +12,28 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     private AuthFragment signUp;
     private AuthFragment logIn;
 
+    private FlipTransformer transformer;
+
     public AuthAdapter(FragmentManager manager, AnimatedViewPager pager){
         super(manager);
         this.pager=pager;
         this.pager.setDuration(10000);
-        this.pager.setPageTransformer(false, new ViewPager.PageTransformer() {
+        this.pager.setPageTransformer(true, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View page, float position) {
                 onPreTransform(page,position);
-                final float width = page.getWidth();
-                final float height = page.getHeight();
-                final float rotation = -15f * position * -1.25f;
+                if(position<=0){
+                    page.setTranslationX(page.getWidth());
+                    page.setAlpha(1+position);
+                }else {
+                    final float width = page.getWidth();
+                    final float height = page.getHeight();
+                    final float rotation = -35f * position * -1.25f;
 
-                page.setPivotX(width * 0.5f);
-                page.setPivotY(height);
-                page.setRotation(rotation);
+                    page.setPivotX(width * 0.5f);
+                    page.setPivotY(height);
+                    page.setRotation(rotation);
+                }
             }
 
             private  void onPreTransform(View view, float position) {
@@ -39,9 +46,27 @@ public class AuthAdapter extends FragmentStatePagerAdapter
                 view.setPivotY(0);
                 view.setTranslationY(0);
                 view.setTranslationX(0f);
-                view.setAlpha(position <= -1f || position >= 1f ? 0f : 1f);
+                view.setAlpha(1);
             }
         });
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                transformer.setMovingForward(position==0);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        transformer=new FlipTransformer(90);
+        this.pager.setPageTransformer(true,transformer);
     }
 
     @Override
@@ -60,9 +85,11 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     @Override
     public void remove(AuthFragment fragment) {
         if(logIn==fragment){
+            transformer.setMovingForward(true);
             pager.setCurrentItem(1,true);
             signUp.fireAnimation();
         }else{
+            transformer.setMovingForward(false);
             pager.setCurrentItem(0,true);
             logIn.fireAnimation();
         }
