@@ -2,11 +2,14 @@ package com.vpaliy.loginconcept;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.graphics.Path;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -82,12 +85,18 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     @Override
     public void scale(boolean hasFocus) {
-        float scale=hasFocus?1:1.4f;
-        authBackground.animate()
-                .scaleX(scale)
-                .scaleY(scale)
-                .setDuration(200)
-                .start();
+        final float scale=hasFocus?1:1.4f;
+        final float logoScale=hasFocus?0.75f:1f;
+        View logo=sharedElements.get(0);
+
+        AnimatorSet scaleAnimation=new AnimatorSet();
+        scaleAnimation.playTogether(ObjectAnimator.ofFloat(logo,View.SCALE_X,logoScale));
+        scaleAnimation.playTogether(ObjectAnimator.ofFloat(logo,View.SCALE_Y,logoScale));
+        scaleAnimation.playTogether(ObjectAnimator.ofFloat(authBackground,View.SCALE_X,scale));
+        scaleAnimation.playTogether(ObjectAnimator.ofFloat(authBackground,View.SCALE_Y,scale));
+        scaleAnimation.setDuration(200);
+        scaleAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+        scaleAnimation.start();
     }
 
     @Override
