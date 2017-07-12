@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,10 +14,9 @@
         app:layout_constraintGuide_begin="48dp"
         android:orientation="horizontal" />
 
-    <ImageView
-        android:id="@+id/focus_hider"
+    <View
+        android:id="@+id/logo"
         android:focusable="true"
-        android:src="@drawable/log"
         android:focusableInTouchMode="true"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         android:layout_marginTop="8dp"
@@ -32,7 +30,7 @@
         android:id="@+id/email_input"
         android:layout_height="wrap_content"
         android:textColorHint="#FFF"
-        app:layout_constraintTop_toBottomOf="@+id/focus_hider"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         android:layout_marginTop="48dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -100,7 +98,7 @@
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textColor="#fafafa"
-        android:text="Log In"
+        android:text="@string/log_in_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

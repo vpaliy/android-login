@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.vpaliy.loginconcept.LoginActivity">
 
-
     <ImageView
         android:id="@+id/scrolling_background"
         android:layout_width="0dp"
@@ -31,11 +30,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-
     <ImageView
         android:src="@drawable/facebook"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/option_size"
+        android:layout_height="@dimen/option_size"
         android:id="@+id/first"
         app:layout_constraintRight_toLeftOf="@+id/second"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -45,8 +43,8 @@
 
     <ImageView
         android:src="@drawable/linkedin"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/option_size"
+        android:layout_height="@dimen/option_size"
         android:id="@+id/second"
         app:layout_constraintLeft_toRightOf="@+id/first"
         app:layout_constraintRight_toLeftOf="@+id/last"
@@ -57,12 +55,32 @@
     <ImageView
         android:src="@drawable/twitter"
         android:id="@+id/last"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/option_size"
+        android:layout_height="@dimen/option_size"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/second"
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
         app:layout_constraintVertical_bias="1.0" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="48dp"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:focusable="true"
+        android:src="@drawable/log"
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="64dp"
+        android:layout_height="64dp"/>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -1,26 +1,33 @@
 package com.vpaliy.loginconcept;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
+
+import java.util.List;
 
 public class AuthAdapter extends FragmentStatePagerAdapter
         implements AuthFragment.Callback{
 
     private AnimatedViewPager pager;
     private SparseArray<AuthFragment> authArray;
+    private List<View> sharedElements;
     private ImageView authBackground;
 
     public AuthAdapter(FragmentManager manager,
                        AnimatedViewPager pager,
-                       ImageView authBackground){
+                       ImageView authBackground,
+                       List<View> sharedElements){
         super(manager);
         this.authBackground=authBackground;
         this.pager=pager;
         this.authArray=new SparseArray<>(getCount());
+        this.sharedElements=sharedElements;
         authBackground.setScrollX(-authBackground.getWidth()/2);
         pager.setDuration(pager.getResources().getInteger(R.integer.duration));
 
@@ -41,7 +48,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     public void show(AuthFragment fragment) {
         final int index=authArray.keyAt(authArray.indexOfValue(fragment));
         pager.setCurrentItem(index,true);
-        shiftBackground(index==1);
+        shiftSharedElements(getPageOffsetX(fragment,index), index==1);
         for(int jIndex=0;jIndex<authArray.size();jIndex++){
             if(jIndex!=index){
                 authArray.get(jIndex).fold();
@@ -49,12 +56,28 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         }
     }
 
-    private void shiftBackground(boolean forward){
+    private float getPageOffsetX(AuthFragment fragment, int index){
+        int pageWidth=fragment.getView().getWidth();
+        return pageWidth-pageWidth*getPageWidth(index);
+    }
+
+    private void shiftSharedElements(float pageOffsetX, boolean forward){
+        //shift shared elements on the screen
+        AnimatorSet shiftAnimator=new AnimatorSet();
+        for(View view:sharedElements){
+            float translationX=forward?pageOffsetX:-pageOffsetX;
+            float temp=pager.getResources().getDimension(R.dimen.option_size)/2;
+            translationX+=!forward?temp:-temp;
+            ObjectAnimator shift=ObjectAnimator.ofFloat(view,View.TRANSLATION_X,0,translationX);
+            shiftAnimator.playTogether(shift);
+        }
+        //shift the background
         int offset=authBackground.getWidth()/2;
         ObjectAnimator scrollAnimator=ObjectAnimator.ofInt(authBackground,"scrollX",forward?offset:-offset);
-        scrollAnimator.setDuration(authBackground.getResources().getInteger(R.integer.duration));
-        scrollAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        scrollAnimator.start();
+        shiftAnimator.playTogether(scrollAnimator);
+        shiftAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        shiftAnimator.setDuration(pager.getResources().getInteger(R.integer.duration)/2);
+        shiftAnimator.start();
     }
 
     @Override
