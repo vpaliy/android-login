@@ -3,7 +3,11 @@ package com.vpaliy.loginconcept;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Point;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -24,7 +28,7 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
 
     @BindViews(value = {R.id.logo,R.id.first,R.id.second,R.id.last})
-    protected List<View> sharedElements;
+    protected List<ImageView> sharedElements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         final AnimatedViewPager pager= ButterKnife.findById(this,R.id.pager);
         final ImageView background=ButterKnife.findById(this,R.id.scrolling_background);
         int[] screenSize=screenSize();
+
+        sharedElements.forEach(element->
+            DrawableCompat.setTint(element.getDrawable(), ContextCompat.getColor(this,R.color.white_transparent)));
+        //load a very big image and resize it to fit our needs
         Glide.with(this)
                 .load(R.drawable.busy)
                 .asBitmap()

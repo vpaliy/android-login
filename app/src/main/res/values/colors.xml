@@ -4,7 +4,14 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     
-    <color name="color_sign_up">#7e019c8f</color>
-    <color name="color_log_in">#886e1ca3</color>
+    <color name="color_log_in">#7e019c8f</color>
+    <color name="color_sign_up">#7e303f9f</color>
+
+
+    <color name="color_logo_log_in">#b4faf5</color>
+    <color name="color_logo_sign_up">#bbc4fd</color>
+
+
+    <color name="white_transparent">#ebfafafa</color>
 
 </resources>

@@ -2,9 +2,12 @@ package com.vpaliy.loginconcept;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.graphics.Path;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -19,13 +22,13 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     private AnimatedViewPager pager;
     private SparseArray<AuthFragment> authArray;
-    private List<View> sharedElements;
+    private List<ImageView> sharedElements;
     private ImageView authBackground;
 
     public AuthAdapter(FragmentManager manager,
                        AnimatedViewPager pager,
                        ImageView authBackground,
-                       List<View> sharedElements){
+                       List<ImageView> sharedElements){
         super(manager);
         this.authBackground=authBackground;
         this.pager=pager;
@@ -64,6 +67,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     }
 
     private void shiftSharedElements(float pageOffsetX, boolean forward){
+        final Context context=pager.getContext();
         //since we're clipping the page, we have to adjust the shared elements
         AnimatorSet shiftAnimator=new AnimatorSet();
         for(View view:sharedElements){
@@ -73,6 +77,9 @@ public class AuthAdapter extends FragmentStatePagerAdapter
             ObjectAnimator shift=ObjectAnimator.ofFloat(view,View.TRANSLATION_X,0,translationX);
             shiftAnimator.playTogether(shift);
         }
+
+        int color=ContextCompat.getColor(context,forward?R.color.color_logo_sign_up:R.color.color_logo_log_in);
+        DrawableCompat.setTint(sharedElements.get(0).getDrawable(),color);
         //scroll the background by x
         int offset=authBackground.getWidth()/2;
         ObjectAnimator scrollAnimator=ObjectAnimator.ofInt(authBackground,"scrollX",forward?offset:-offset);
