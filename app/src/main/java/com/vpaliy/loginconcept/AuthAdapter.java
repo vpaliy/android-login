@@ -33,7 +33,6 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         this.sharedElements=sharedElements;
         authBackground.setScrollX(-authBackground.getWidth()/2);
         pager.setDuration(pager.getResources().getInteger(R.integer.duration));
-
     }
 
     @Override

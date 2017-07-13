@@ -1,13 +1,19 @@
 package com.vpaliy.loginconcept;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.ImageViewTarget;
 
 import java.util.List;
 
@@ -25,16 +31,31 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        AnimatedViewPager pager= ButterKnife.findById(this,R.id.pager);
-        ImageView background=ButterKnife.findById(this,R.id.scrolling_background);
+        final AnimatedViewPager pager= ButterKnife.findById(this,R.id.pager);
+        final ImageView background=ButterKnife.findById(this,R.id.scrolling_background);
         int[] screenSize=screenSize();
         Glide.with(this)
                 .load(R.drawable.busy)
                 .asBitmap()
                 .override(screenSize[0]*2,screenSize[1])
-                .into(background);
-        AuthAdapter adapter=new AuthAdapter(getSupportFragmentManager(),pager,background,sharedElements);
-        pager.setAdapter(adapter);
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(new ImageViewTarget<Bitmap>(background) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        background.setImageBitmap(resource);
+                        background.scrollTo(-pager.getWidth()/2,0);
+                        ObjectAnimator xAnimator=ObjectAnimator.ofFloat(background,View.SCALE_X,4f,background.getScaleX());
+                        ObjectAnimator yAnimator=ObjectAnimator.ofFloat(background,View.SCALE_Y,4f,background.getScaleY());
+
+                        AnimatorSet set=new AnimatorSet();
+                        set.playTogether(xAnimator,yAnimator);
+                        set.setDuration(400);
+                        set.start();
+
+                        AuthAdapter adapter = new AuthAdapter(getSupportFragmentManager(), pager, background, sharedElements);
+                        pager.setAdapter(adapter);
+                    }
+                });
     }
 
     private int[] screenSize(){
