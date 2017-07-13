@@ -26,6 +26,9 @@
         android:background="@drawable/rounded_right"
         android:text="@string/log_in_or_label"
         android:padding="@dimen/switcher_padding"
+        android:paddingLeft="@dimen/extra_left_padding"
+        android:paddingStart="@dimen/extra_left_padding"
+        android:translationX="@dimen/extra_translation_x_left"
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textColor="#fafafa"
@@ -76,7 +79,7 @@
         app:layout_constraintLeft_toRightOf="@+id/second"
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
