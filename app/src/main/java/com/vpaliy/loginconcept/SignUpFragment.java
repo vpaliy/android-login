@@ -41,14 +41,13 @@ public class SignUpFragment extends AuthFragment{
 
     @Override
     public void clearFocus() {
-        for(View view:views){
-            view.clearFocus();
-        }
+        views.forEach(View::clearFocus);
     }
 
     @Override
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
+        lock=false;
         TransitionManager.beginDelayedTransition(parent);
         foldStuff();
     }

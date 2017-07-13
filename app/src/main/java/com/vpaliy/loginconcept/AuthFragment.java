@@ -38,6 +38,8 @@ public abstract class AuthFragment extends Fragment {
     @BindView(R.id.root)
     protected ViewGroup parent;
 
+    protected boolean lock;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,26 +76,29 @@ public abstract class AuthFragment extends Fragment {
     @OnClick(R.id.caption)
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void unfold(){
-        Transition transition= unfoldTransition();
-        transition.addListener(new TransitionAdapterListener(){
-            @Override
-            public void onTransitionEnd(Transition transition) {
-                super.onTransitionEnd(transition);
-                caption.setVerticalText(false);
-                caption.setRotation(0);
-                caption.requestLayout();
-            }
-        });
-        TransitionManager.beginDelayedTransition(parent, transition);
-        ConstraintLayout.LayoutParams params=getParams();
-        params.rightToRight=ConstraintLayout.LayoutParams.PARENT_ID;
-        params.leftToLeft=ConstraintLayout.LayoutParams.PARENT_ID;
-        params.verticalBias=0.8f;
-        caption.setScaleY(1f);
-        caption.setScaleX(1f);
-        caption.setRotation(-90);
-        caption.setLayoutParams(params);
-        callback.show(this);
+        if(!lock) {
+            Transition transition = unfoldTransition();
+            transition.addListener(new TransitionAdapterListener() {
+                @Override
+                public void onTransitionEnd(Transition transition) {
+                    super.onTransitionEnd(transition);
+                    caption.setVerticalText(false);
+                    caption.setRotation(0);
+                    caption.requestLayout();
+                }
+            });
+            TransitionManager.beginDelayedTransition(parent, transition);
+            ConstraintLayout.LayoutParams params = getParams();
+            params.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.verticalBias = 0.8f;
+            caption.setScaleY(1f);
+            caption.setScaleX(1f);
+            caption.setRotation(-90);
+            caption.setLayoutParams(params);
+            callback.show(this);
+            lock=true;
+        }
     }
 
     protected ConstraintLayout.LayoutParams getParams(){

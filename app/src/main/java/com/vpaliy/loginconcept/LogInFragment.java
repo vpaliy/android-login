@@ -39,6 +39,7 @@ public class LogInFragment extends AuthFragment{
     @Override
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
+        lock=false;
         TransitionManager.beginDelayedTransition(parent);
         caption.setVerticalText(true);
         caption.setScaleY(0.5f);
@@ -51,9 +52,7 @@ public class LogInFragment extends AuthFragment{
 
     @Override
     public void clearFocus() {
-        for(View view:views){
-            view.clearFocus();
-        }
+        views.forEach(View::clearFocus);
     }
 
     @Override
