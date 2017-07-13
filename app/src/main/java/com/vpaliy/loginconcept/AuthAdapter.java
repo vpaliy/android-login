@@ -91,6 +91,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     @Override
     public void scale(boolean hasFocus) {
+
         final float scale=hasFocus?1:1.4f;
         final float logoScale=hasFocus?0.75f:1f;
         View logo=sharedElements.get(0);

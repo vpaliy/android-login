@@ -51,13 +51,10 @@ public abstract class AuthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(authLayout(),container,false);
         ButterKnife.bind(this,root);
-        KeyboardVisibilityEvent.setEventListener(getActivity(), new KeyboardVisibilityEventListener() {
-            @Override
-            public void onVisibilityChanged(boolean isOpen) {
-                callback.scale(isOpen);
-                if(!isOpen){
-                   clearFocus();
-                }
+        KeyboardVisibilityEvent.setEventListener(getActivity(), isOpen -> {
+            callback.scale(isOpen);
+            if(!isOpen){
+                clearFocus();
             }
         });
         return root;

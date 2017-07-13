@@ -26,71 +26,45 @@
         android:layout_height="64dp"/>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="220dp"
+        style="@style/Widget.TextInputLayout"
         android:id="@+id/email_input"
-        android:layout_height="wrap_content"
-        android:textColorHint="#FFF"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
         android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:padding="16dp"
+            style="@style/Widget.TextEdit"
             android:id="@+id/email_input_edit"
-            android:textColorHighlight="#fafafa"
-            android:textStyle="bold"
-            android:background="@drawable/state"
-            android:layout_height="match_parent"
             android:hint="@string/email_hint"
-            android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF" />
+            android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:textColorHint="#FFF"
+        style="@style/Widget.TextInputLayout"
         android:id="@+id/password_input"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         android:layout_marginTop="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:padding="16dp"
-            android:textStyle="bold"
+            style="@style/Widget.TextEdit"
             android:id="@+id/password_input_edit"
-            android:background="@drawable/state"
-            android:layout_height="match_parent"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF" />
+            android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:textColorHint="#FFF"
-        app:layout_constraintTop_toBottomOf="@+id/password_input"
+        style="@style/Widget.TextInputLayout"
         android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/password_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:padding="16dp"
-            android:textStyle="bold"
+            style="@style/Widget.TextEdit"
             android:id="@+id/confirm_password_edit"
-            android:background="@drawable/state"
-            android:layout_height="match_parent"
             android:hint="@string/confirm_hint"
-            android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF" />
+            android:inputType="textEmailAddress"/>
     </android.support.design.widget.TextInputLayout>
-
 
     <com.vpaliy.loginconcept.VerticalTextView
         android:id="@+id/caption"
