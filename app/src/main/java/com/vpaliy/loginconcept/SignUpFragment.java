@@ -1,5 +1,6 @@
 package com.vpaliy.loginconcept;
 
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -36,6 +37,10 @@ public class SignUpFragment extends AuthFragment{
             views.forEach(editText->{
                 if(editText.getId()==R.id.password_input_edit){
                     final TextInputLayout inputLayout= ButterKnife.findById(view,R.id.password_input);
+                    final TextInputLayout confirmLayout=ButterKnife.findById(view,R.id.confirm_password);
+                    Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+                    inputLayout.setTypeface(boldTypeface);
+                    confirmLayout.setTypeface(boldTypeface);
                     editText.addTextChangedListener(new TextWatcherAdapter(){
                         @Override
                         public void afterTextChanged(Editable editable) {

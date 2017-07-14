@@ -56,6 +56,7 @@
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
+        android:id="@+id/confirm_password"
         android:layout_marginTop="16dp"
         app:passwordToggleTint="@color/color_input_hint"
         app:layout_constraintTop_toBottomOf="@+id/password_input"
