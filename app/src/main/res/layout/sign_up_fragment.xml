@@ -29,6 +29,7 @@
         style="@style/Widget.TextInputLayout"
         android:id="@+id/email_input"
         android:layout_marginTop="48dp"
+        android:background="@drawable/what"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -44,6 +45,7 @@
         android:id="@+id/password_input"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         android:layout_marginTop="16dp"
+        android:background="@drawable/what"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
         <android.support.design.widget.TextInputEditText
@@ -56,6 +58,7 @@
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
         android:layout_marginTop="16dp"
+        android:background="@drawable/what"
         app:layout_constraintTop_toBottomOf="@+id/password_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

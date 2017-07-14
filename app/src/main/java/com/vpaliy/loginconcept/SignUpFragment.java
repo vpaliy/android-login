@@ -22,7 +22,7 @@ public class SignUpFragment extends AuthFragment{
     @BindViews(value = {R.id.email_input_edit,
             R.id.password_input_edit,
             R.id.confirm_password_edit})
-    protected List<View> views;
+    protected List<TextInputEditText> views;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -30,6 +30,14 @@ public class SignUpFragment extends AuthFragment{
         if(view!=null){
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_sign_up));
             caption.setText(getString(R.string.sign_up_label));
+            views.forEach(editText->{
+                editText.setOnFocusChangeListener((temp,hasFocus)->{
+                    if(!hasFocus){
+                        boolean isEnabled=editText.getText().length()>0;
+                        editText.setSelected(isEnabled);
+                    }
+                });
+            });
             foldStuff();
         }
     }

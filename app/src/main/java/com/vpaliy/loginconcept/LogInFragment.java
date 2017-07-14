@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.annotation.TargetApi;
 import android.support.annotation.Nullable;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 public class LogInFragment extends AuthFragment{
 
     @BindViews(value = {R.id.email_input_edit,R.id.password_input_edit})
-    protected List<View> views;
+    protected List<TextInputEditText> views;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -31,6 +32,14 @@ public class LogInFragment extends AuthFragment{
         if(view!=null){
             caption.setText(getString(R.string.log_in_label));
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_log_in));
+            views.forEach(editText->{
+                editText.setOnFocusChangeListener((temp,hasFocus)->{
+                    if(!hasFocus){
+                        boolean isEnabled=editText.getText().length()>0;
+                        editText.setSelected(isEnabled);
+                    }
+                });
+            });
         }
     }
 

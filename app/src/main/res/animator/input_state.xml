@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_focused="true">
+        <objectAnimator
+            android:valueFrom="0dp"
+            android:valueTo="100dp"
+            android:propertyName="cornerRadius"/>
+    </item>
+
+
+    <item android:state_focused="false">
+        <objectAnimator
+            android:valueFrom="100dp"
+            android:valueTo="0dp"
+            android:propertyName="cornerRadius"/>
+    </item>
+</selector>

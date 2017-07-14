@@ -9,6 +9,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">@color/color_input_hint</item>
+        <item name="colorControlHighlight">@color/color_input_hint</item>
     </style>
 
     <style name="Widget"/>
