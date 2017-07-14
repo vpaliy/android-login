@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
@@ -38,6 +39,10 @@ public class AnimatedViewPager extends ViewPager {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        return false;
+    }
 
     public void setScrollDurationFactor(double scrollFactor) {
         mScroller.setScrollDurationFactor(scrollFactor);
@@ -70,7 +75,7 @@ public class AnimatedViewPager extends ViewPager {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duratio) {
-            super.startScroll(startX, startY, dx, dy, duratio);
+            super.startScroll(startX, startY, dx, dy, duration);
         }
 
         @Override

@@ -70,7 +70,7 @@ public class AnimatedViewPager extends ViewPager {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duratio) {
-            super.startScroll(startX, startY, dx, dy, duratio);
+            super.startScroll(startX, startY, dx, dy, duration);
         }
 
         @Override

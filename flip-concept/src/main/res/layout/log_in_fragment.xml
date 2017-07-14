@@ -79,8 +79,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintRight_toLeftOf="@+id/controller"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintRight_toLeftOf="@+id/controller" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -116,6 +115,7 @@
             android:padding="16dp"
             android:textColorHighlight="#fafafa"
             android:textStyle="bold"
+            android:id="@+id/email_input_edit"
             android:background="@drawable/input_state"
             android:layout_height="match_parent"
             android:hint="@string/email_hint"
@@ -137,6 +137,7 @@
             android:layout_width="match_parent"
             android:padding="16dp"
             android:textStyle="bold"
+            android:id="@+id/password_input_edit"
             android:background="@drawable/input_state"
             android:layout_height="match_parent"
             android:hint="@string/password_hint"

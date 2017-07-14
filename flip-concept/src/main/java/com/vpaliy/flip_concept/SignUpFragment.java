@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,15 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.OvershootInterpolator;
 
+import java.util.List;
+
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class SignUpFragment extends AuthFragment{
+
+    @BindViews(value = {R.id.email_input_edit, R.id.password_input_edit,R.id.confirm_password_input_edit})
+    protected List<View> views;
 
     @Nullable
     @Override
@@ -25,6 +33,12 @@ public class SignUpFragment extends AuthFragment{
         ButterKnife.bind(this,root);
         return root;
     }
+
+    @Override
+    public void cleaFocus() {
+        views.forEach(View::clearFocus);
+    }
+
 
     @Override
     public void fireAnimation() {

@@ -18,6 +18,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         super(manager);
         this.pager=pager;
         transformer=new FlipTransformer(160);
+        this.pager.setDuration(200);
         this.pager.setPageTransformer(true,transformer);
     }
 

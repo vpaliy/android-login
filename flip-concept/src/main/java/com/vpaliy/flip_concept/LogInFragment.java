@@ -13,10 +13,15 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.OvershootInterpolator;
 
+import java.util.List;
+
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class LogInFragment extends AuthFragment {
 
+    @BindViews(value = {R.id.email_input_edit,R.id.password_input_edit})
+    protected List<View> views;
 
     @Nullable
     @Override
@@ -27,8 +32,13 @@ public class LogInFragment extends AuthFragment {
     }
 
     @Override
+    public void cleaFocus() {
+        views.forEach(View::clearFocus);
+    }
+
+    @Override
     public void fireAnimation() {
-        float offsetX=parent.getWidth()-last.getLeft()-getResources().getDimension(R.dimen.option_size);
+        float offsetX=parent.getWidth()-(last.getX()+last.getWidth())-getResources().getDimension(R.dimen.option_size);
         ObjectAnimator firstAnimator=ObjectAnimator.ofFloat(first,View.TRANSLATION_X,0);
         ObjectAnimator secondAnimator=ObjectAnimator.ofFloat(second,View.TRANSLATION_X,0);
         ObjectAnimator lastAnimator=ObjectAnimator.ofFloat(last,View.TRANSLATION_X,0);
