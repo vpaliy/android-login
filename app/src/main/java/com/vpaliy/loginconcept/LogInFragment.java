@@ -33,6 +33,15 @@ public class LogInFragment extends AuthFragment{
             caption.setText(getString(R.string.log_in_label));
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_log_in));
             views.forEach(editText->{
+                if(editText.getId()==R.id.password_input_edit){
+                    final TextInputLayout inputLayout=ButterKnife.findById(view,R.id.password_input);
+                    editText.addTextChangedListener(new TextWatcherAdapter(){
+                        @Override
+                        public void afterTextChanged(Editable editable) {
+                            inputLayout.setPasswordVisibilityToggleEnabled(editable.length()>0);
+                        }
+                    });
+                }
                 editText.setOnFocusChangeListener((temp,hasFocus)->{
                     if(!hasFocus){
                         boolean isEnabled=editText.getText().length()>0;

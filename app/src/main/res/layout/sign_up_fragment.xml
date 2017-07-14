@@ -29,7 +29,6 @@
         style="@style/Widget.TextInputLayout"
         android:id="@+id/email_input"
         android:layout_marginTop="48dp"
-        android:background="@drawable/what"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -45,20 +44,20 @@
         android:id="@+id/password_input"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         android:layout_marginTop="16dp"
-        android:background="@drawable/what"
+        app:passwordToggleTint="@color/color_input_hint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.TextEdit"
             android:id="@+id/password_input_edit"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
         android:layout_marginTop="16dp"
-        android:background="@drawable/what"
+        app:passwordToggleTint="@color/color_input_hint"
         app:layout_constraintTop_toBottomOf="@+id/password_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -66,7 +65,7 @@
             style="@style/Widget.TextEdit"
             android:id="@+id/confirm_password_edit"
             android:hint="@string/confirm_hint"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textPassword"/>
     </android.support.design.widget.TextInputLayout>
 
     <com.vpaliy.loginconcept.VerticalTextView

@@ -19,10 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.BindViews;
 import android.support.annotation.ColorRes;
 
-//TODO set sensitive text
-//TODO transition drawable when some text's been typed
 //TODO fix drawable margins
-//TODO add password toggles
 //TODO maybe check the colors one more time :(
 
 public class LoginActivity extends AppCompatActivity {
