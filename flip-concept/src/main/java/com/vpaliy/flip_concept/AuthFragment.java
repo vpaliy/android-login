@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -46,6 +49,15 @@ public abstract class AuthFragment extends Fragment {
 
     interface Callback {
         void remove(AuthFragment fragment);
+    }
+
+    public SpannableStringBuilder mergeColoredText(String leftPart, String rightPart, int leftColor, int rightColor) {
+        final SpannableStringBuilder builder = new SpannableStringBuilder();
+        final SpannableString leftPartSpannable = new SpannableString(leftPart.toUpperCase());
+        final SpannableString rightPartSpannable = new SpannableString(rightPart.toUpperCase());
+        leftPartSpannable.setSpan(new ForegroundColorSpan(leftColor), 0, leftPart.length(), 0);
+        rightPartSpannable.setSpan(new ForegroundColorSpan(rightColor), 0, rightPart.length(), 0);
+        return builder.append(leftPartSpannable).append("  ").append(rightPartSpannable);
     }
 
     @Override

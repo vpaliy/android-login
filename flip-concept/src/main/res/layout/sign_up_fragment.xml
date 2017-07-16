@@ -1,5 +1,5 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/color_sign_up"
     android:id="@+id/parent"
     android:layout_width="match_parent"
@@ -24,11 +24,12 @@
 
     <TextView
         android:background="@drawable/rounded_right"
-        android:text="@string/log_in_or_label"
+        tools:text="Or Log In"
         android:padding="@dimen/switcher_padding"
         android:paddingLeft="@dimen/extra_left_padding"
         android:paddingStart="@dimen/extra_left_padding"
         android:translationX="@dimen/extra_translation_x_left"
+        android:textSize="18sp"
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textColor="#fafafa"
@@ -47,13 +48,15 @@
         android:layout_height="@dimen/option_size"
         android:id="@+id/first"
         app:layout_constraintRight_toLeftOf="@+id/second"
-        app:layout_constraintBottom_toBottomOf="@+id/controller"
         android:layout_marginRight="@dimen/option_margin"
         android:layout_marginEnd="@dimen/option_margin"
         app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@+id/controller"
-        app:layout_constraintTop_toTopOf="@+id/controller" />
+        app:layout_constraintTop_toTopOf="@+id/second"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/second"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:src="@drawable/linkedin"
@@ -64,9 +67,8 @@
         android:layout_marginEnd="@dimen/option_margin"
         app:layout_constraintLeft_toRightOf="@+id/first"
         app:layout_constraintRight_toLeftOf="@+id/last"
-        app:layout_constraintTop_toTopOf="@+id/first"
-        app:layout_constraintBottom_toBottomOf="@+id/first"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/last"
+        app:layout_constraintBottom_toBottomOf="@+id/last" />
 
     <ImageView
         android:src="@drawable/twitter"
@@ -76,10 +78,11 @@
         android:layout_marginRight="@dimen/option_margin"
         android:layout_marginEnd="@dimen/option_margin"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@+id/second"
-        app:layout_constraintBottom_toBottomOf="@+id/second"
-        app:layout_constraintTop_toTopOf="@+id/second"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/controller"
+        app:layout_constraintBottom_toBottomOf="@+id/controller"
+        app:layout_constraintVertical_bias="0" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -92,6 +95,7 @@
         android:id="@+id/focus_hider"
         android:focusable="true"
         android:src="@drawable/log"
+        android:tint="@color/color_logo_sign_up"
         android:focusableInTouchMode="true"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         android:layout_marginTop="8dp"

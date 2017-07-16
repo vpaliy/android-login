@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,9 @@ public class SignUpFragment extends AuthFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.sign_up_fragment,container,false);
         ButterKnife.bind(this,root);
+        controller.setText(mergeColoredText(getString(R.string.or),getString(R.string.sign_up_or_label),
+                ContextCompat.getColor(getContext(),R.color.white_trans),
+                ContextCompat.getColor(getContext(),R.color.color_text)));
         return root;
     }
 
