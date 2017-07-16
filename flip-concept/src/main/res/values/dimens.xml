@@ -11,4 +11,13 @@
     <dimen name="extra_right_padding">108dp</dimen>
     <dimen name="extra_translation_x_left">-80dp</dimen>
     <dimen name="extra_translation_x_right">80dp</dimen>
+
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+    <item name="wrap_content" format="integer" type="dimen">-2</item>
+
+    <dimen name="auth_page_margin">24dp</dimen>
+    <dimen name="folded_size">17sp</dimen>
+    <dimen name="unfolded_size">26sp</dimen>
+    <dimen name="text_padding">16dp</dimen>
+    <dimen name="input_width">220dp</dimen>
 </resources>

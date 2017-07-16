@@ -1,5 +1,7 @@
 package com.vpaliy.flip_concept;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -32,7 +34,7 @@ public class SignUpFragment extends AuthFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.sign_up_fragment,container,false);
         ButterKnife.bind(this,root);
-        controller.setText(mergeColoredText(getString(R.string.or),getString(R.string.sign_up_or_label),
+        controller.setText(mergeColoredText(getString(R.string.or),getString(R.string.log_in_or_label),
                 ContextCompat.getColor(getContext(),R.color.white_trans),
                 ContextCompat.getColor(getContext(),R.color.color_text)));
         return root;
