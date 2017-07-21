@@ -72,8 +72,8 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         AnimatorSet shiftAnimator=new AnimatorSet();
         for(View view:sharedElements){
             float translationX=forward?pageOffsetX:-pageOffsetX;
-            float temp=pager.getResources().getDimension(R.dimen.option_size)/2;
-            translationX+=!forward?temp:-temp;
+            float temp=view.getWidth()/3f;
+            translationX-=forward?temp:-temp;
             ObjectAnimator shift=ObjectAnimator.ofFloat(view,View.TRANSLATION_X,0,translationX);
             shiftAnimator.playTogether(shift);
         }

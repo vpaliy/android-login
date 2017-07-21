@@ -19,9 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.BindViews;
 import android.support.annotation.ColorRes;
 
-//TODO fix drawable margins
-//TODO maybe check the colors one more time :(
-
 public class LoginActivity extends AppCompatActivity {
 
     @BindViews(value = {R.id.logo,R.id.first,R.id.second,R.id.last})
