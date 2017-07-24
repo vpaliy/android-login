@@ -53,6 +53,14 @@ public class VerticalTextView extends AppCompatTextView {
         isVerticalText = verticalText;
     }
 
+    public boolean isVerticalText() {
+        return isVerticalText;
+    }
+
+    public boolean isTopDown() {
+        return topDown;
+    }
+
     @Override
     protected void onDraw(Canvas canvas){
         if(isVerticalText) {
@@ -69,7 +77,6 @@ public class VerticalTextView extends AppCompatTextView {
                 canvas.translate(0, getHeight());
                 canvas.rotate(-90);
             }
-
 
             canvas.translate(getCompoundPaddingLeft(), getExtendedPaddingTop());
 

@@ -3,7 +3,6 @@ package com.vpaliy.loginconcept;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Path;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
@@ -11,8 +10,6 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -20,10 +17,11 @@ import java.util.List;
 public class AuthAdapter extends FragmentStatePagerAdapter
         implements AuthFragment.Callback{
 
-    private AnimatedViewPager pager;
-    private SparseArray<AuthFragment> authArray;
-    private List<ImageView> sharedElements;
-    private ImageView authBackground;
+    private final AnimatedViewPager pager;
+    private final SparseArray<AuthFragment> authArray;
+    private final List<ImageView> sharedElements;
+    private final ImageView authBackground;
+    private float factor;
 
     public AuthAdapter(FragmentManager manager,
                        AnimatedViewPager pager,
@@ -36,6 +34,9 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         this.sharedElements=sharedElements;
         authBackground.setScrollX(-authBackground.getWidth()/2);
         pager.setDuration(pager.getResources().getInteger(R.integer.duration));
+        final float textSize=pager.getResources().getDimension(R.dimen.folded_size);
+        final float textPadding=pager.getResources().getDimension(R.dimen.folded_label_padding);
+        factor=1-(textSize+textPadding)/(pager.getWidth());
     }
 
     @Override
@@ -108,7 +109,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
 
     @Override
     public float getPageWidth(int position) {
-        return 0.89f;
+        return factor;
     }
 
     @Override

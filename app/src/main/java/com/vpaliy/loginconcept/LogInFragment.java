@@ -1,5 +1,6 @@
 package com.vpaliy.loginconcept;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,13 +10,20 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.transition.TransitionManager;
+
+import com.transitionseverywhere.ChangeBounds;
+import com.transitionseverywhere.Transition;
+import com.transitionseverywhere.TransitionInflater;
+import com.transitionseverywhere.TransitionManager;
+import com.transitionseverywhere.TransitionSet;
+
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.annotation.TargetApi;
 import android.support.annotation.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 
 import java.util.List;
 
@@ -64,14 +72,40 @@ public class LogInFragment extends AuthFragment{
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
         lock=false;
-        TransitionManager.beginDelayedTransition(parent);
-        caption.setVerticalText(true);
-        caption.setScaleY(0.5f);
-        caption.setScaleX(0.5f);
-        ConstraintLayout.LayoutParams params=getParams();
-        params.leftToLeft=ConstraintLayout.LayoutParams.UNSET;
-        params.verticalBias=0.5f;
-        caption.setLayoutParams(params);
+        Rotate transition = new Rotate();
+        transition.setEndAngle(-90f);
+        transition.addTarget(caption);
+        TransitionSet set=new TransitionSet();
+        set.setDuration(getResources().getInteger(R.integer.duration));
+        ChangeBounds changeBounds=new ChangeBounds();
+        set.addTransition(changeBounds);
+        set.addTransition(transition);
+        TextSizeTransition sizeTransition=new TextSizeTransition();
+        sizeTransition.addTarget(caption);
+        set.addTransition(sizeTransition);
+        set.setOrdering(TransitionSet.ORDERING_TOGETHER);
+        final float padding=getResources().getDimension(R.dimen.folded_label_padding)/2;
+        set.addListener(new Transition.TransitionListenerAdapter(){
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                super.onTransitionEnd(transition);
+                caption.setTranslationX(-padding);
+                caption.setRotation(0);
+                caption.setVerticalText(true);
+                caption.requestLayout();
+
+            }
+        });
+        caption.post(()->{
+            TransitionManager.beginDelayedTransition(parent,set);
+            caption.setTextSize(TypedValue.COMPLEX_UNIT_PX,caption.getTextSize()/2);
+            caption.setTextColor(Color.WHITE);
+            ConstraintLayout.LayoutParams params=getParams();
+            params.leftToLeft=ConstraintLayout.LayoutParams.UNSET;
+            params.verticalBias=0.5f;
+            caption.setLayoutParams(params);
+            caption.setTranslationX(caption.getWidth()/8-padding);
+        });
     }
 
     @Override
@@ -79,10 +113,4 @@ public class LogInFragment extends AuthFragment{
         views.forEach(View::clearFocus);
     }
 
-    @Override
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public Transition unfoldTransition() {
-        return TransitionInflater.from(getContext())
-                .inflateTransition(R.transition.left_to_right);
-    }
 }

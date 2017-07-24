@@ -11,7 +11,7 @@
     <color name="color_logo_log_in">#b4faf5</color>
     <color name="color_logo_sign_up">#bbc4fd</color>
 
-
+    <color name="color_label">#ededed</color>
     <color name="white_transparent">#fafafa</color>
 
     <color name="color_input_hint">#FFF</color>

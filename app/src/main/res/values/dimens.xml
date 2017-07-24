@@ -4,9 +4,11 @@
     <item name="wrap_content" format="integer" type="dimen">-2</item>
 
     <dimen name="auth_page_margin">24dp</dimen>
-    <dimen name="folded_size">17sp</dimen>
-    <dimen name="unfolded_size">26sp</dimen>
+    <dimen name="folded_size">20sp</dimen>
+    <dimen name="unfolded_size">40sp</dimen>
     <dimen name="option_size">56dp</dimen>
     <dimen name="text_padding">16dp</dimen>
     <dimen name="input_width">220dp</dimen>
+    <dimen name="label_size">20sp</dimen>
+    <dimen name="folded_label_padding">22sp</dimen>
 </resources>

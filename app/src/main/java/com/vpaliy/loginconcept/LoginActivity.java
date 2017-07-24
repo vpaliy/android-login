@@ -71,5 +71,4 @@ public class LoginActivity extends AppCompatActivity {
         display.getSize(size);
         return new int[]{size.x,size.y};
     }
-
 }

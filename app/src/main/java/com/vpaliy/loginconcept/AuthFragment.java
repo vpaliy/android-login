@@ -1,32 +1,21 @@
 package com.vpaliy.loginconcept;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import com.transitionseverywhere.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import butterknife.ButterKnife;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.transition.Transition;
-import android.transition.TransitionManager;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
-
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.BindView;
 
 public abstract class AuthFragment extends Fragment {
 
@@ -68,31 +57,36 @@ public abstract class AuthFragment extends Fragment {
     public abstract int authLayout();
     public abstract void fold();
     public abstract void clearFocus();
-    public abstract Transition unfoldTransition();
 
     @OnClick(R.id.caption)
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void unfold(){
         if(!lock) {
-            Transition transition = unfoldTransition();
-            transition.addListener(new TransitionAdapterListener() {
-                @Override
-                public void onTransitionEnd(Transition transition) {
-                    super.onTransitionEnd(transition);
-                    caption.setVerticalText(false);
-                    caption.setRotation(0);
-                    caption.requestLayout();
-                }
+            caption.setVerticalText(false);
+            caption.requestLayout();
+            Rotate transition = new Rotate();
+            transition.setStartAngle(-90f);
+            transition.setEndAngle(0f);
+            transition.addTarget(caption);
+            TransitionSet set=new TransitionSet();
+            set.setDuration(getResources().getInteger(R.integer.duration));
+            ChangeBounds changeBounds=new ChangeBounds();
+            set.addTransition(changeBounds);
+            set.addTransition(transition);
+            TextSizeTransition sizeTransition=new TextSizeTransition();
+            sizeTransition.addTarget(caption);
+            set.addTransition(sizeTransition);
+            set.setOrdering(TransitionSet.ORDERING_TOGETHER);
+            caption.post(()->{
+                TransitionManager.beginDelayedTransition(parent, set);
+                caption.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.unfolded_size));
+                caption.setTextColor(ContextCompat.getColor(getContext(),R.color.color_label));
+                caption.setTranslationX(0);
+                ConstraintLayout.LayoutParams params = getParams();
+                params.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
+                params.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+                params.verticalBias = 0.78f;
+                caption.setLayoutParams(params);
             });
-            TransitionManager.beginDelayedTransition(parent, transition);
-            ConstraintLayout.LayoutParams params = getParams();
-            params.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
-            params.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
-            params.verticalBias = 0.8f;
-            caption.setScaleY(1f);
-            caption.setScaleX(1f);
-            caption.setRotation(-90);
-            caption.setLayoutParams(params);
             callback.show(this);
             lock=true;
         }
@@ -106,5 +100,4 @@ public abstract class AuthFragment extends Fragment {
         void show(AuthFragment fragment);
         void scale(boolean hasFocus);
     }
-
 }

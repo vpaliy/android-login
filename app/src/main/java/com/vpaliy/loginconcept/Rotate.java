@@ -6,19 +6,21 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.transition.Transition;
-import android.transition.TransitionValues;
+import com.transitionseverywhere.Transition;
+import com.transitionseverywhere.TransitionValues;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class Rotate extends Transition {
 
     private static final String PROPNAME_ROTATION = "vpaliy:rotate:rotation";
 
     private float startAngle;
     private float endAngle;
+
+    public Rotate(){}
 
     public Rotate(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,6 +30,14 @@ public class Rotate extends Transition {
             endAngle=array.getFloat(R.styleable.Rotate_end_angle,0f);
             array.recycle();
         }
+    }
+
+    public void setEndAngle(float endAngle) {
+        this.endAngle = endAngle;
+    }
+
+    public void setStartAngle(float startAngle) {
+        this.startAngle = startAngle;
     }
 
     @Override
