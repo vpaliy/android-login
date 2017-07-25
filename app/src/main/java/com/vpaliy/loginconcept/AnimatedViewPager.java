@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
-
 import java.lang.reflect.Field;
 
 public class AnimatedViewPager extends ViewPager {
@@ -25,14 +24,11 @@ public class AnimatedViewPager extends ViewPager {
         postInitViewPager();
     }
 
-    private ScrollerCustomDuration mScroller = null;
-
-
     private void postInitViewPager() {
         try {
             Field scroller = ViewPager.class.getDeclaredField("mScroller");
             scroller.setAccessible(true);
-            mScroller = new ScrollerCustomDuration(getContext(),
+            ScrollerCustomDuration mScroller = new ScrollerCustomDuration(getContext(),
                     new DecelerateInterpolator());
             scroller.set(this, mScroller);
         } catch (Exception e) {
@@ -44,17 +40,11 @@ public class AnimatedViewPager extends ViewPager {
         return false;
     }
 
-    public void setScrollDurationFactor(double scrollFactor) {
-        mScroller.setScrollDurationFactor(scrollFactor);
-    }
-
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
     public class ScrollerCustomDuration extends Scroller {
-
-        private double mScrollFactor = 1;
 
         public ScrollerCustomDuration(Context context) {
             super(context);
@@ -67,10 +57,6 @@ public class AnimatedViewPager extends ViewPager {
         @SuppressLint("NewApi")
         public ScrollerCustomDuration(Context context, Interpolator interpolator, boolean flywheel) {
             super(context, interpolator, flywheel);
-        }
-
-        public void setScrollDurationFactor(double scrollFactor) {
-            mScrollFactor = scrollFactor;
         }
 
         @Override

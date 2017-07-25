@@ -13,8 +13,8 @@
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         tools:src="@drawable/busy"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
+        android:scaleX="@dimen/start_scale"
+        android:scaleY="@dimen/start_scale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
-        app:layout_constraintGuide_begin="48dp"
+        app:layout_constraintGuide_begin="@dimen/guideline_margin"
         android:orientation="horizontal" />
 
     <ImageView
@@ -79,11 +79,8 @@
         android:src="@drawable/log"
         android:focusableInTouchMode="true"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="64dp"
-        android:layout_height="64dp"/>
-
-
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"/>
 </android.support.constraint.ConstraintLayout>
