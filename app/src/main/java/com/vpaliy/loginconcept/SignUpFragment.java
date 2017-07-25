@@ -58,6 +58,7 @@ public class SignUpFragment extends AuthFragment{
             });
             caption.setVerticalText(true);
             foldStuff();
+            caption.setTranslationX(getTextPadding());
         }
     }
 
@@ -72,7 +73,6 @@ public class SignUpFragment extends AuthFragment{
     }
 
     @Override
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void fold() {
         lock=false;
         caption.requestLayout();
@@ -88,12 +88,11 @@ public class SignUpFragment extends AuthFragment{
         sizeTransition.addTarget(caption);
         set.addTransition(sizeTransition);
         set.setOrdering(TransitionSet.ORDERING_TOGETHER);
-        final float padding=getResources().getDimension(R.dimen.folded_label_padding)/2.1f;
         set.addListener(new Transition.TransitionListenerAdapter(){
             @Override
             public void onTransitionEnd(Transition transition) {
                 super.onTransitionEnd(transition);
-                caption.setTranslationX(padding);
+                caption.setTranslationX(getTextPadding());
                 caption.setRotation(0);
                 caption.setVerticalText(true);
                 caption.requestLayout();
@@ -103,7 +102,7 @@ public class SignUpFragment extends AuthFragment{
         caption.post(()->{
             TransitionManager.beginDelayedTransition(parent,set);
             foldStuff();
-            caption.setTranslationX(-caption.getWidth()/8+padding);
+            caption.setTranslationX(-caption.getWidth()/8+getTextPadding());
         });
     }
 
@@ -114,5 +113,9 @@ public class SignUpFragment extends AuthFragment{
         params.rightToRight=ConstraintLayout.LayoutParams.UNSET;
         params.verticalBias=0.5f;
         caption.setLayoutParams(params);
+    }
+
+    private float getTextPadding(){
+        return getResources().getDimension(R.dimen.folded_label_padding)/2.1f;
     }
 }

@@ -32,7 +32,6 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         this.pager=pager;
         this.authArray=new SparseArray<>(getCount());
         this.sharedElements=sharedElements;
-        authBackground.setScrollX(-authBackground.getWidth()/2);
         pager.setDuration(pager.getResources().getInteger(R.integer.duration));
         final float textSize=pager.getResources().getDimension(R.dimen.folded_size);
         final float textPadding=pager.getResources().getDimension(R.dimen.folded_label_padding);
@@ -54,7 +53,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
     public void show(AuthFragment fragment) {
         final int index=authArray.keyAt(authArray.indexOfValue(fragment));
         pager.setCurrentItem(index,true);
-        shiftSharedElements(getPageOffsetX(fragment,index), index==1);
+        shiftSharedElements(getPageOffsetX(fragment), index==1);
         for(int jIndex=0;jIndex<authArray.size();jIndex++){
             if(jIndex!=index){
                 authArray.get(jIndex).fold();
@@ -62,9 +61,9 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         }
     }
 
-    private float getPageOffsetX(AuthFragment fragment, int index){
+    private float getPageOffsetX(AuthFragment fragment){
         int pageWidth=fragment.getView().getWidth();
-        return pageWidth-pageWidth*getPageWidth(index);
+        return pageWidth-pageWidth*factor;
     }
 
     private void shiftSharedElements(float pageOffsetX, boolean forward){

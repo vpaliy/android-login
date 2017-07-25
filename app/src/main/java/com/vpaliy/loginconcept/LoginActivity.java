@@ -47,10 +47,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     protected void setResource(Bitmap resource) {
                         background.setImageBitmap(resource);
-                        background.scrollTo(-pager.getWidth(),0);
                         background.post(()->{
                             //we need to scroll to the very left edge of the image
                             //fire the scale animation
+                            background.scrollTo(-background.getWidth()/2,0);
                             ObjectAnimator xAnimator=ObjectAnimator.ofFloat(background,View.SCALE_X,4f,background.getScaleX());
                             ObjectAnimator yAnimator=ObjectAnimator.ofFloat(background,View.SCALE_Y,4f,background.getScaleY());
                             AnimatorSet set=new AnimatorSet();
