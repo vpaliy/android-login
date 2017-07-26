@@ -96,16 +96,14 @@ public class LogInFragment extends AuthFragment{
 
             }
         });
-        caption.post(()->{
-            TransitionManager.beginDelayedTransition(parent,set);
-            caption.setTextSize(TypedValue.COMPLEX_UNIT_PX,caption.getTextSize()/2);
-            caption.setTextColor(Color.WHITE);
-            ConstraintLayout.LayoutParams params=getParams();
-            params.leftToLeft=ConstraintLayout.LayoutParams.UNSET;
-            params.verticalBias=0.5f;
-            caption.setLayoutParams(params);
-            caption.setTranslationX(caption.getWidth()/8-padding);
-        });
+        TransitionManager.beginDelayedTransition(parent,set);
+        caption.setTextSize(TypedValue.COMPLEX_UNIT_PX,caption.getTextSize()/2);
+        caption.setTextColor(Color.WHITE);
+        ConstraintLayout.LayoutParams params=getParams();
+        params.leftToLeft=ConstraintLayout.LayoutParams.UNSET;
+        params.verticalBias=0.5f;
+        caption.setLayoutParams(params);
+        caption.setTranslationX(caption.getWidth()/8-padding);
     }
 
     @Override

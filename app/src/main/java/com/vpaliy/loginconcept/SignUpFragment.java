@@ -75,7 +75,6 @@ public class SignUpFragment extends AuthFragment{
     @Override
     public void fold() {
         lock=false;
-        caption.requestLayout();
         Rotate transition = new Rotate();
         transition.setEndAngle(-90f);
         transition.addTarget(caption);
@@ -99,11 +98,9 @@ public class SignUpFragment extends AuthFragment{
 
             }
         });
-        caption.post(()->{
-            TransitionManager.beginDelayedTransition(parent,set);
-            foldStuff();
-            caption.setTranslationX(-caption.getWidth()/8+getTextPadding());
-        });
+        TransitionManager.beginDelayedTransition(parent,set);
+        foldStuff();
+        caption.setTranslationX(-caption.getWidth()/8+getTextPadding());
     }
 
     private void foldStuff(){
