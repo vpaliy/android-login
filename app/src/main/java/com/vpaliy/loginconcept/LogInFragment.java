@@ -41,7 +41,7 @@ public class LogInFragment extends AuthFragment{
         if(view!=null){
             caption.setText(getString(R.string.log_in_label));
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_log_in));
-            views.forEach(editText->{
+            for(TextInputEditText editText:views){
                 if(editText.getId()==R.id.password_input_edit){
                     final TextInputLayout inputLayout=ButterKnife.findById(view,R.id.password_input);
                     Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
@@ -59,7 +59,7 @@ public class LogInFragment extends AuthFragment{
                         editText.setSelected(isEnabled);
                     }
                 });
-            });
+            }
         }
     }
 
@@ -108,7 +108,7 @@ public class LogInFragment extends AuthFragment{
 
     @Override
     public void clearFocus() {
-        views.forEach(View::clearFocus);
+        for(View view:views) view.clearFocus();
     }
 
 }

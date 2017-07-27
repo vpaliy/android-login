@@ -34,6 +34,8 @@ import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import com.transitionseverywhere.*;
+
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -218,7 +220,7 @@ public class TextSizeTransition extends Transition {
             }
         };
         animator.addListener(listener);
-        animator.addPauseListener(listener);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT) animator.addPauseListener(listener);
         return animator;
     }
 

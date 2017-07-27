@@ -35,7 +35,7 @@ public class SignUpFragment extends AuthFragment{
         if(view!=null){
             view.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_sign_up));
             caption.setText(getString(R.string.sign_up_label));
-            views.forEach(editText->{
+            for(TextInputEditText editText:views){
                 if(editText.getId()==R.id.password_input_edit){
                     final TextInputLayout inputLayout= ButterKnife.findById(view,R.id.password_input);
                     final TextInputLayout confirmLayout=ButterKnife.findById(view,R.id.confirm_password);
@@ -55,7 +55,7 @@ public class SignUpFragment extends AuthFragment{
                         editText.setSelected(isEnabled);
                     }
                 });
-            });
+            }
             caption.setVerticalText(true);
             foldStuff();
             caption.setTranslationX(getTextPadding());
@@ -69,7 +69,7 @@ public class SignUpFragment extends AuthFragment{
 
     @Override
     public void clearFocus() {
-        views.forEach(View::clearFocus);
+        for(View view:views) view.clearFocus();
     }
 
     @Override

@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         final ImageView background=ButterKnife.findById(this,R.id.scrolling_background);
         int[] screenSize=screenSize();
 
-        sharedElements.forEach(element->{
+        for(ImageView element:sharedElements){
             @ColorRes int color=element.getId()!=R.id.logo?R.color.white_transparent:R.color.color_logo_log_in;
             DrawableCompat.setTint(element.getDrawable(), ContextCompat.getColor(this,color));
-        });
+        }
         //load a very big image and resize it, so it fits our needs
         Glide.with(this)
                 .load(R.drawable.busy)

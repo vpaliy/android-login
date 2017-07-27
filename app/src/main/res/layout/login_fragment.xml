@@ -22,8 +22,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="64dp"
-        android:layout_height="64dp"/>
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"/>
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"

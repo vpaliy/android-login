@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+    <item name="wrap_content" format="integer" type="dimen">-2</item>
+
+    <dimen name="auth_page_margin">24dp</dimen>
+    <dimen name="folded_size">20sp</dimen>
+    <dimen name="unfolded_size">40sp</dimen>
+    <dimen name="option_size">48dp</dimen>
+    <dimen name="text_padding">16dp</dimen>
+    <dimen name="input_width">180dp</dimen>
+    <dimen name="label_size">20sp</dimen>
+    <dimen name="folded_label_padding">22sp</dimen>
+    <dimen name="logo_size">56dp</dimen>
+    <dimen name="guideline_margin">56dp</dimen>
+</resources>
