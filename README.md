@@ -35,7 +35,7 @@ Inspired by [Yaroslav Zubkov's](https://www.uplabs.com/posts/7-2-log-in-sign-up)
 ```
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2017 Vasyl Paliy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
