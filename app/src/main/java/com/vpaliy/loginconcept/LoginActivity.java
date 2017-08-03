@@ -58,8 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                             set.setDuration(getResources().getInteger(R.integer.duration));
                             set.start();
                         });
-                        AuthAdapter adapter = new AuthAdapter(getSupportFragmentManager(), pager, background, sharedElements);
-                        pager.setAdapter(adapter);
+                        pager.post(()->{
+                            AuthAdapter adapter = new AuthAdapter(getSupportFragmentManager(), pager, background, sharedElements);
+                            pager.setAdapter(adapter);
+                        });
                     }
                 });
     }

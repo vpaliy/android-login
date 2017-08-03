@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'dfcbkm123'
+            storeFile file('/home/vpaliy/keystore/key.jks')
+            storePassword 'dfcbkm123'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -15,16 +23,15 @@ android {
             enabled true
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -33,14 +40,13 @@ android {
 dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile "com.andkulikov:transitionseverywhere:1.7.4"
+    compile 'com.andkulikov:transitionseverywhere:1.7.4'
     compile 'com.android.support:design:25.3.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
-    compile "com.github.bumptech.glide:glide:3.7.0"
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.Q42:AndroidScrollingImageView:1.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
 }
