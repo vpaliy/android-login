@@ -58,7 +58,7 @@ public abstract class AuthFragment extends Fragment {
     public abstract void fold();
     public abstract void clearFocus();
 
-    @OnClick(R.id.caption)
+    @OnClick(R.id.root)
     public void unfold(){
         if(!lock) {
             caption.setVerticalText(false);
