@@ -32,7 +32,7 @@ public class AuthAdapter extends FragmentStatePagerAdapter
         this.pager=pager;
         this.authArray=new SparseArray<>(getCount());
         this.sharedElements=sharedElements;
-        pager.setDuration(400);
+        pager.setDuration(350);
         final float textSize=pager.getResources().getDimension(R.dimen.folded_size);
         final float textPadding=pager.getResources().getDimension(R.dimen.folded_label_padding);
         factor=1-(textSize+textPadding)/(pager.getWidth());
