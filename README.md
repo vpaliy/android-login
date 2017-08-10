@@ -5,7 +5,7 @@ A picture is worth a thousand words. Here you have something better:
 
 ![](https://github.com/vpaliyX/LoginConcept/blob/master/art/ezgif.com-video-to-gif(19).gif)__
 ![](https://github.com/vpaliyX/LoginConcept/blob/master/art/ezgif.com-video-to-gif(20).gif)
-### More smooth is [here](https://www.youtube.com/watch?v=18MwhJj97gQ) ###
+### More smooth is [here](https://www.youtube.com/watch?v=p83w7OPfpFI) ###
 
 Or you can have with rectangular corners:
 
