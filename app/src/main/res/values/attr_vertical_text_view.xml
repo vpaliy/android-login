@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="VerticalTextView">
-        <attr name="is_vertical_text" format="boolean"/>
-        <attr name="top_down" format="boolean"/>
+        <attr name="is_vertical_text" format="boolean" />
+        <attr name="top_down" format="boolean" />
     </declare-styleable>
 </resources>

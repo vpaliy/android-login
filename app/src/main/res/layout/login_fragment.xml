@@ -1,55 +1,56 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
-    tools:background="@color/color_sign_up"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="@color/color_sign_up">
 
     <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        app:layout_constraintGuide_begin="48dp"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="48dp" />
 
     <View
         android:id="@+id/logo"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
+        android:layout_marginTop="8dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <android.support.design.widget.TextInputLayout
-        style="@style/Widget.TextInputLayout"
         android:id="@+id/email_input"
+        style="@style/Widget.TextInputLayout"
         android:layout_marginTop="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
         <android.support.design.widget.TextInputEditText
-            style="@style/Widget.TextEdit"
             android:id="@+id/email_input_edit"
+            style="@style/Widget.TextEdit"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        style="@style/Widget.TextInputLayout"
         android:id="@+id/password_input"
-        app:layout_constraintTop_toBottomOf="@+id/email_input"
+        style="@style/Widget.TextInputLayout"
         android:layout_marginTop="16dp"
-        app:passwordToggleTint="@color/color_input_hint"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_input"
+        app:passwordToggleTint="@color/color_input_hint">
+
         <android.support.design.widget.TextInputEditText
-            style="@style/Widget.TextEdit"
             android:id="@+id/password_input_edit"
+            style="@style/Widget.TextEdit"
             android:hint="@string/password_hint"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
@@ -57,15 +58,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#FFF"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="@string/forgot_password"
-        app:layout_constraintTop_toBottomOf="@+id/password_input"
         android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="@string/forgot_password"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input" />
 
 
     <com.vpaliy.loginconcept.VerticalTextView
@@ -73,14 +74,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="@dimen/unfolded_size"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textColor="@color/color_label"
         android:text="@string/log_in_label"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAllCaps="true"
+        android:textColor="@color/color_label"
+        android:textSize="@dimen/unfolded_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintVertical_bias="0.78" />
 </android.support.constraint.ConstraintLayout>

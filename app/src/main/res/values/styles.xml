@@ -12,7 +12,7 @@
         <item name="colorControlHighlight">@color/color_input_hint</item>
     </style>
 
-    <style name="Widget"/>
+    <style name="Widget" />
 
     <style name="Widget.TextInputLayout">
         <item name="android:layout_height">@dimen/wrap_content</item>

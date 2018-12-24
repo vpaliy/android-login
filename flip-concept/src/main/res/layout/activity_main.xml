@@ -1,10 +1,9 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@color/color_sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@color/color_sign_up"
     tools:context="com.vpaliy.flip_concept.MainActivity">
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,4 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
@@ -12,14 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        tools:src="@drawable/busy"
         android:scaleX="@dimen/start_scale"
         android:scaleY="@dimen/start_scale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@drawable/busy" />
 
     <com.vpaliy.loginconcept.AnimatedViewPager
         android:id="@+id/pager"
@@ -34,53 +33,53 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:src="@drawable/facebook"
+        android:id="@+id/first"
         android:layout_width="@dimen/option_size"
         android:layout_height="@dimen/option_size"
-        android:id="@+id/first"
-        app:layout_constraintRight_toLeftOf="@+id/second"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/facebook"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/second"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
     <ImageView
-        android:src="@drawable/linkedin"
+        android:id="@+id/second"
         android:layout_width="@dimen/option_size"
         android:layout_height="@dimen/option_size"
-        android:id="@+id/second"
+        android:src="@drawable/linkedin"
+        app:layout_constraintBottom_toBottomOf="@+id/first"
         app:layout_constraintLeft_toRightOf="@+id/first"
         app:layout_constraintRight_toLeftOf="@+id/last"
         app:layout_constraintTop_toTopOf="@+id/first"
-        app:layout_constraintBottom_toBottomOf="@+id/first"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:src="@drawable/twitter"
         android:id="@+id/last"
         android:layout_width="@dimen/option_size"
         android:layout_height="@dimen/option_size"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/second"
+        android:src="@drawable/twitter"
         app:layout_constraintBottom_toBottomOf="@+id/second"
+        app:layout_constraintLeft_toRightOf="@+id/second"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/second"
         app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        app:layout_constraintGuide_begin="@dimen/guideline_margin"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/guideline_margin" />
 
     <ImageView
         android:id="@+id/logo"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
         android:focusable="true"
-        android:src="@drawable/log"
         android:focusableInTouchMode="true"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:src="@drawable/log"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="@dimen/logo_size"
-        android:layout_height="@dimen/logo_size"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 </android.support.constraint.ConstraintLayout>

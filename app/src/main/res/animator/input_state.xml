@@ -3,16 +3,16 @@
 
     <item android:state_focused="true">
         <objectAnimator
+            android:propertyName="cornerRadius"
             android:valueFrom="0dp"
-            android:valueTo="100dp"
-            android:propertyName="cornerRadius"/>
+            android:valueTo="100dp" />
     </item>
 
 
     <item android:state_focused="false">
         <objectAnimator
+            android:propertyName="cornerRadius"
             android:valueFrom="100dp"
-            android:valueTo="0dp"
-            android:propertyName="cornerRadius"/>
+            android:valueTo="0dp" />
     </item>
 </selector>
